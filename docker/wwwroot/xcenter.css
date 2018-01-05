@@ -1,0 +1,14 @@
+﻿.wln-line{border-bottom:1px solid #dddddd;padding-top:8px;margin-bottom:8px;}
+.wln-title .el-button--small,.wln-subtitle .el-button--small {line-height:16px;vertical-align:middle;}
+.wln-subtitle .el-input__inner {height:34px;}
+
+.el-tree{background-color:transparent}
+.el-tree-node{margin:10px 0px;}
+.el-tree-node .el-button {
+    margin: 0px 6px;
+    font-size: 13px;
+    line-height: 13px;
+    height: 17px;
+    padding: 2px 6px;
+    border-radius: 2px;
+}

@@ -1,0 +1,87 @@
+﻿<div id="app" class="wln">
+    <div class="wln-subtitle">
+        <el-button size="small" type="primary" onclick="location.href='/system/settings'" style="float:right;">更多配置</el-button>
+        基础设置
+    </div>
+    <div class="wln-line"></div>
+    <el-form ref="form" label-width="140px">
+        <el-form-item>
+            <el-col :span="3" class="label">组织名称&nbsp;</el-col>
+            <el-col :span="18">
+                <input id="OrganName" onfocus="ClearTips()" onchange="ChangeSave(this)" type="text" value="@ViewBag.OrganName" required="required" style="width:240px" /><span class="tips"></span>
+            </el-col>
+        </el-form-item>
+        <el-form-item>
+            <el-col :span="3" class="label">系统名称&nbsp;</el-col>
+            <el-col :span="18">
+                <input id="SystemName" onfocus="ClearTips()" onchange="ChangeSave(this)" type="text" value="@ViewBag.SystemName" required="required" style="width:240px" /><span class="tips"></span>
+            </el-col>
+        </el-form-item>
+        <el-form-item>
+            <el-col :span="3" class="label">Api Token&nbsp;</el-col>
+            <el-col :span="18">
+                <input id="Token" onfocus="ClearTips()" onchange="ChangeSave(this)" type="text" value="@ViewBag.Token" required="required" style="width:240px" /><span class="tips"></span>
+            </el-col>
+        </el-form-item>
+        <el-form-item>
+            <el-col :span="3" class="label">微信AppId&nbsp;</el-col>
+            <el-col :span="18">
+                <input id="WxAppId" onfocus="ClearTips()" onchange="ChangeSave(this)" type="text" value="@ViewBag.WxAppId" required="required" style="width:240px" /><span class="tips"></span>
+            </el-col>
+        </el-form-item>
+        <el-form-item>
+            <el-col :span="3" class="label">微信AppSecret&nbsp;</el-col>
+            <el-col :span="18">
+                <input id="WxAppSecret" onfocus="ClearTips()" onchange="ChangeSave(this)" type="text" value="@ViewBag.WxAppSecret" required="required" style="width:240px" /><span class="tips"></span>
+            </el-col>
+        </el-form-item>
+        <el-form-item>
+            <el-col :span="3" class="label">短信接口AppKey&nbsp;</el-col>
+            <el-col :span="18">
+                <input id="SmsAppKey" onfocus="ClearTips()" onchange="ChangeSave(this)" type="text" value="@ViewBag.SmsAppKey" required="required" style="width:240px" /><span class="tips"></span>
+            </el-col>
+        </el-form-item>
+        <el-form-item>
+            <el-col :span="3" class="label">短信接口AppSecret&nbsp;</el-col>
+            <el-col :span="18">
+                <input id="SmsAppSecret" onfocus="ClearTips()" onchange="ChangeSave(this)" type="text" value="@ViewBag.SmsAppSecret" required="required" style="width:240px" /><span class="tips"></span>
+            </el-col>
+        </el-form-item>
+        <el-form-item>
+            <el-col :span="3" class="label">短信接口签名&nbsp;</el-col>
+            <el-col :span="18">
+                <input id="SmsSignName" onfocus="ClearTips()" onchange="ChangeSave(this)" type="text" value="@ViewBag.SmsSignName" required="required" style="width:240px" /><span class="tips"></span>
+            </el-col>
+        </el-form-item>
+        <el-form-item>
+            <el-col :span="3" class="label">短信接口模板号&nbsp;</el-col>
+            <el-col :span="18">
+                <input id="SmsTemplate" onfocus="ClearTips()" onchange="ChangeSave(this)" type="text" value="@ViewBag.SmsTemplate" required="required" style="width:240px" /><span class="tips"></span>
+            </el-col>
+        </el-form-item>
+    </el-form>
+</div>
+<script type="text/javascript">
+    var app = new Vue({ el: '#app' });
+    function ClearTips() {
+        $(this).next().html('');
+    }
+    function ChangeSave(e) {
+        var obj = $(e);
+        if (obj.val() || !obj.attr('required')) {
+            obj.next().html('<font style="color:#2196F3">保存中...</font>');
+            $.getJSON(location.pathname + '?do=set', { key: obj.attr('id'), value: obj.val() }, function (json) {
+                if (json.success) {
+                    obj.next().html('<font style="color:#4CAF50">已保存</font>');
+                    setTimeout(function () {
+                        obj.next().html('');
+                    }, 2000);
+                } else {
+                    obj.next().html('<font style="color:#F44336">' + json.message + '</font>');
+                }
+            });
+        } else {
+            obj.next().html('<font style="color:#F44336">必填项</font>');
+        }
+    }
+</script>
