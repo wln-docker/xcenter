@@ -1,7 +1,13 @@
 ﻿.wln-line{border-bottom:1px solid #dddddd;padding-top:8px;margin-bottom:8px;}
 .wln-title .el-button--small,.wln-subtitle .el-button--small {line-height:16px;vertical-align:middle;}
 .wln-subtitle .el-input__inner {height:34px;}
-
+.el-button + .el-button {
+    margin-left: 6px;
+}
+.el-button--mini {
+    padding: 5px 7px;
+    font-size: 13px;
+}
 .el-tree{background-color:transparent}
 .el-tree-node{margin:10px 0px;}
 .el-tree-node .el-button {

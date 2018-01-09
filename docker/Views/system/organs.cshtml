@@ -20,14 +20,13 @@
             <el-table-column label="分类" property="type"></el-table-column>
             <el-table-column width="70" align="center" label="状态">
                 <template scope="scope">
-                    <el-tag type="primary" v-if="scope.row.state==='1'">正常</el-tag>
-                    <el-tag type="gray" v-else>停用</el-tag>
+                    <font v-if="scope.row.state==='1'">正常</font>
+                    <font v-else style="color:#cccccc">停用</font>
                 </template>
             </el-table-column>
-            <el-table-column width="150" label="操作">
+            <el-table-column width="180" label="操作">
                 <template scope="scope">
-                    <el-button size="small" @@click="handleEdit(scope.row)">编辑</el-button>
-                    <el-button size="small" type="danger" @@click="handleDelete(scope.row)">删除</el-button>
+                    <el-button size="mini" icon="el-icon-edit" type="warning" @@click="handleEdit(scope.row)">编辑</el-button><el-button size="mini" icon="el-icon-delete" type="danger" @@click="handleDelete(scope.row)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -36,39 +35,33 @@
 </template>
 <template id="app-form">
     <div class="wln">
-        <el-row :gutter="10">
-            <el-col :xs="12" :sm="10" :md="9" :lg="6">
-                <el-form ref="form" v-model="form" label-width="100px">
-                    <el-form-item label="@Html.Raw(ViewBag.LabelOrgan)简称">
-                        <el-input v-model="form.name" placeholder="尽量少于5个汉字" style="width:320px"></el-input>
-                    </el-form-item>
-                    <el-form-item label="@Html.Raw(ViewBag.LabelOrgan)全称">
-                        <el-input v-model="form.fullname" placeholder="" style="width:320px"></el-input>
-                    </el-form-item>
-                    <el-form-item label="分类">
-                        <el-select v-model="form.type" clearable placeholder="请选择">
-                            <el-option v-for="item in types" :label="item.label" :value="item.value"></el-option>
-                        </el-select>
-                    </el-form-item>
-                    <el-form-item label="权重">
-                        <el-input v-model="form.sort" placeholder="" style="width:60px"></el-input> <span style="color:#808080">数值越大越靠前</span>
-                    </el-form-item>
-                    <el-form-item label="状态">
-                        <el-switch on-text="启用" off-text="停用" on-value="1" off-value="0" v-model="form.state"></el-switch>
-                    </el-form-item>
-                    <el-form-item>
-                        <el-button type="primary" @@click="onSubmit">提交</el-button>
-                        <el-button onclick="router.push('/system/organs')">返回</el-button>
-                    </el-form-item>
-                </el-form>
-            </el-col>
-            <el-col :xs="6" :sm="6" :md="6" :lg="4">
-                <div class="grid-content bg-purple-light"></div>
-            </el-col>
-            <el-col :xs="0" :sm="0" :md="1" :lg="8">
-                <div class="grid-content bg-purple"></div>
-            </el-col>
-        </el-row>
+        <div class="wln-subtitle">
+            @Html.Raw(ViewBag.LabelOrgan)信息 <a onclick="router.push('/system/organs')">返回</a>
+        </div>
+        <div class="wln-line"></div>
+        <el-form ref="form" v-model="form" label-width="100px">
+            <el-form-item label="@Html.Raw(ViewBag.LabelOrgan)简称">
+                <el-input v-model="form.name" placeholder="尽量少于5个汉字" style="width:320px"></el-input>
+            </el-form-item>
+            <el-form-item label="@Html.Raw(ViewBag.LabelOrgan)全称">
+                <el-input v-model="form.fullname" placeholder="" style="width:320px"></el-input>
+            </el-form-item>
+            <el-form-item label="分类">
+                <el-select v-model="form.type" clearable placeholder="请选择">
+                    <el-option v-for="item in types" :label="item.label" :value="item.value"></el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="权重">
+                <el-input v-model="form.sort" placeholder="" style="width:60px"></el-input> <span style="color:#808080">数值越大越靠前</span>
+            </el-form-item>
+            <el-form-item label="状态">
+                <el-switch on-text="启用" off-text="停用" v-model="form.state"></el-switch>
+            </el-form-item>
+            <el-form-item>
+                <el-button icon="el-icon-check" type="primary" @@click="onSubmit">提交</el-button>
+                <el-button icon="el-icon-close" onclick="router.push('/system/organs')">取消</el-button>
+            </el-form-item>
+        </el-form>
     </div>
 </template>
 <script type="text/javascript">
@@ -136,7 +129,7 @@
                     ,
                     sort: ''
                     ,
-                    state: '1'
+                    state: true
                 },
                 types: @Html.Raw(ViewBag.OrganType)
             };
@@ -163,7 +156,7 @@
                         obj.fullname = rlt.data.fullname;
                         obj.type = rlt.data.type;
                         obj.sort = rlt.data.sort;
-                        obj.state = rlt.data.state;
+                        obj.state = rlt.data.state == '1';
                     } else {
                         app.$message({ type: 'info', message: rlt.message });
                     }
