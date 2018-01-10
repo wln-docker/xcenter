@@ -6,15 +6,15 @@
     <div class="wln-line"></div>
     <el-form ref="form" label-width="140px">
         <el-form-item>
-            <el-col :span="3" class="label">组织名称&nbsp;</el-col>
-            <el-col :span="18">
-                <input id="OrganName" onfocus="ClearTips()" onchange="ChangeSave(this)" type="text" value="@ViewBag.OrganName" required="required" style="width:240px" /><span class="tips"></span>
-            </el-col>
-        </el-form-item>
-        <el-form-item>
             <el-col :span="3" class="label">系统名称&nbsp;</el-col>
             <el-col :span="18">
                 <input id="SystemName" onfocus="ClearTips()" onchange="ChangeSave(this)" type="text" value="@ViewBag.SystemName" required="required" style="width:240px" /><span class="tips"></span>
+            </el-col>
+        </el-form-item>
+        <el-form-item>
+            <el-col :span="3" class="label">组织名称&nbsp;</el-col>
+            <el-col :span="18">
+                <input id="OrganName" onfocus="ClearTips()" onchange="ChangeSave(this)" type="text" value="@ViewBag.OrganName" required="required" style="width:240px" /><span class="tips"></span>
             </el-col>
         </el-form-item>
         <el-form-item>
