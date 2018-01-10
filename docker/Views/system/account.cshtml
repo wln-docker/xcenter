@@ -167,7 +167,7 @@
                     ,
                     avatar: ''
                     ,
-                    state: true
+                    state: false
                 }
                 , roles: []
             };
@@ -207,6 +207,9 @@
                         app.$message({ type: 'info', message: rlt.message });
                     }
                 });
+            } else {
+                _self.form.role = 'Member';
+                _self.form.state = true;
             }
         }
     })
