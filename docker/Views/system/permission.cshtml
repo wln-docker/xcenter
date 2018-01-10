@@ -30,7 +30,7 @@
             <el-table-column property="description" label="权限说明"></el-table-column>
             <el-table-column width="180" label="操作" align="center">
                 <template scope="scope">
-                    <el-button size="mini" icon="el-icon-check" type="success" @@click="Change(scope.row.code)" v-if="scope.row.inlist">已授权</el-button><el-button size="mini" icon="el-icon-close" type="warning" @@click="Change(scope.row.code)" v-else plain>未授权</el-button><el-button size="mini" icon="el-icon-refresh" type="danger" @@click="Remove(scope.row.code)" :disabled="scope.row.empty">重置</el-button>
+                    <el-button size="mini" icon="el-icon-check" type="success" @@click="Change(scope.row.code)" v-if="scope.row.inlist" :plain="scope.row.empty">已授权</el-button><el-button size="mini" icon="el-icon-close" type="warning" @@click="Change(scope.row.code)" v-else :plain="scope.row.empty">未授权</el-button><el-button size="mini" icon="el-icon-refresh" type="danger" @@click="Remove(scope.row.code)" :plain="scope.row.empty" :disabled="scope.row.empty">重置</el-button>
                 </template>
             </el-table-column>
         </el-table>
