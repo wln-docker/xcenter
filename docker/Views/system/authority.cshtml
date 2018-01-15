@@ -6,7 +6,12 @@
                 <el-button size="mini" icon="el-icon-plus" type="primary" onclick="router.push('/system/authority/add')">新增权限点</el-button>
                 <input type="text" v-model="key" :value="key" @@keydown="search($event)" placeholder="按回车键进行查找" />
             </div>
-            权限点管理 <a onclick="location.href='/system/role'">返回</a>
+            <el-button-group>
+                <el-button plain size="mini" type="info" @@click="location.href='/system/role'"><svg class="icon"><use v-bind:xlink:href="'#icon-left'"></use></svg></el-button>
+                <el-button v-bind:plain="type!==0" size="mini" type="primary" @@click="topage(0,'')"><svg class="icon"><use v-bind:xlink:href="'#icon-setting'"></use></svg> 系统权限</el-button>
+                <el-button v-bind:plain="type!==1" size="mini" type="primary" @@click="topage(1,'')"><svg class="icon"><use v-bind:xlink:href="'#icon-apps'"></use></svg> 业务权限</el-button>
+                <el-button v-bind:plain="type!==2" size="mini" type="primary" @@click="topage(2,'')"><svg class="icon"><use v-bind:xlink:href="'#icon-organ'"></use></svg> @Html.Raw(ViewBag.LabelOrgan)权限</el-button>
+            </el-button-group>
         </div>
         <div class="wln-line"></div>
         <el-table :data="rows" :empty-text="message"  style="width:100%">
@@ -60,17 +65,26 @@
 <script type="text/javascript">
     var appList = Vue.extend({
         template: '#app-list',
-        data: function () { return emptyPager },
+        data: function () {
+            _t = this.getParam('type');
+            emptyPager.type = _t ? parseInt(_t) : 0;
+            return emptyPager;
+        },
         methods: {
             refresh() {
                 var _self = this;
-                $.getJSON(location.pathname, { 'do': 'list', page: _self.index, rows: _self.size, key: _self.key }, function (rlt) {
+                $.getJSON(location.pathname, { 'do': 'list', page: _self.index, rows: _self.size, type: _self.type, key: _self.key }, function (rlt) {
                     _self.message = rlt.message;
                     _self.total = rlt.total;
                     _self.index = rlt.index;
                     _self.size = rlt.size;
                     _self.rows = rlt.rows;
                 });
+            },
+            topage(to) {
+                emptyPager.rows = [];
+                emptyPager.type = to;
+                this.refresh()
             },
             search(event) { 
                 if (event.keyCode == 13) {
