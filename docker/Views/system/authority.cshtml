@@ -3,14 +3,14 @@
     <div class="wln">
         <div class="wln-subtitle">
             <div style="float:right">
-                <el-button size="mini" icon="el-icon-plus" type="primary" onclick="router.push('/system/authority/add')">新增权限点</el-button>
+                <el-button size="mini" icon="el-icon-plus" type="primary" onclick="router.push('/system/authority/add?type=' + emptyPager.type)">新增权限点</el-button>
                 <input type="text" v-model="key" :value="key" @@keydown="search($event)" placeholder="按回车键进行查找" />
             </div>
             <el-button-group>
                 <el-button plain size="mini" type="info" @@click="location.href='/system/role'"><svg class="icon"><use v-bind:xlink:href="'#icon-left'"></use></svg></el-button>
-                <el-button v-bind:plain="type!==0" size="mini" type="primary" @@click="topage(0,'')"><svg class="icon"><use v-bind:xlink:href="'#icon-setting'"></use></svg> 系统权限</el-button>
-                <el-button v-bind:plain="type!==1" size="mini" type="primary" @@click="topage(1,'')"><svg class="icon"><use v-bind:xlink:href="'#icon-apps'"></use></svg> 业务权限</el-button>
-                <el-button v-bind:plain="type!==2" size="mini" type="primary" @@click="topage(2,'')"><svg class="icon"><use v-bind:xlink:href="'#icon-organ'"></use></svg> @Html.Raw(ViewBag.LabelOrgan)权限</el-button>
+                <el-button v-bind:plain="emptyPager.type!==0" size="mini" type="primary" @@click="topage(0,'')"><svg class="icon"><use v-bind:xlink:href="'#icon-setting'"></use></svg> 系统权限</el-button>
+                <el-button v-bind:plain="emptyPager.type!==1" size="mini" type="primary" @@click="topage(1,'')"><svg class="icon"><use v-bind:xlink:href="'#icon-apps'"></use></svg> 业务权限</el-button>
+                <el-button v-bind:plain="emptyPager.type!==2" size="mini" type="primary" @@click="topage(2,'')"><svg class="icon"><use v-bind:xlink:href="'#icon-organ'"></use></svg> @Html.Raw(ViewBag.LabelOrgan)权限</el-button>
             </el-button-group>
         </div>
         <div class="wln-line"></div>
@@ -24,7 +24,7 @@
             </el-table-column>
             <el-table-column width="150" property="name" label="权限名称"></el-table-column>
             <el-table-column property="description" label="权限说明"></el-table-column>
-            <el-table-column width="180" property="code" label="编码"></el-table-column>
+            <el-table-column width="220" property="code" label="编码"></el-table-column>
             <el-table-column width="150" label="操作" align="center">
                 <template scope="scope">
                     <el-button size="mini" icon="el-icon-edit" type="warning" @@click="handleEdit(scope.row)">编辑</el-button><el-button size="mini" icon="el-icon-delete" type="danger" @@click="handleDelete(scope.row)">删除</el-button>
@@ -37,7 +37,7 @@
 <template id="app-form">
     <div class="wln">
         <div class="wln-subtitle">
-            权限信息 <a onclick="router.push('/system/authority')">返回</a>
+            权限信息
         </div>
         <div class="wln-line"></div>
         <el-form ref="form" v-model="form" label-width="80px">
@@ -57,7 +57,7 @@
             </el-form-item>
             <el-form-item>
                 <el-button icon="el-icon-check" type="primary" @@click="onSubmit">提交</el-button>
-                <el-button icon="el-icon-close" onclick="router.push('/system/authority')">取消</el-button>
+                <el-button v-model="form" icon="el-icon-close" onclick="router.push('/system/authority?type=' + emptyPager.type)">取消</el-button>
             </el-form-item>
         </el-form>
     </div>
@@ -66,8 +66,7 @@
     var appList = Vue.extend({
         template: '#app-list',
         data: function () {
-            _t = this.getParam('type');
-            emptyPager.type = _t ? parseInt(_t) : 0;
+            emptyPager.type = 0;
             return emptyPager;
         },
         methods: {
@@ -125,6 +124,8 @@
                 });
             }
         }, created() {
+            _t = this.getParam('type');
+            emptyPager.type = _t ? parseInt(_t) : 0;
             this.refresh();
         }
     })
@@ -148,6 +149,7 @@
         },
         methods: {
             typeChange(val) {
+                emptyPager.type = val;
                 this.form.text = this.types[val].text;
             },
             onSubmit: function () {
@@ -184,6 +186,8 @@
                     }
                 });
             } else {
+                _t = this.getParam('type');
+                this.form.type = _t ? parseInt(_t) : 0;
                 this.form.text = this.types[this.form.type].text;
             }
         }
