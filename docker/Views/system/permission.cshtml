@@ -1,4 +1,4 @@
-﻿<div id="app">
+﻿<div id="app" style="overflow:auto;height:100%;">
     <div class="wln" style="text-align:center;">
         <el-button-group>
             <el-button plain size="mini" type="info" @@click="location.href='/system/account'"><svg class="icon"><use v-bind:xlink:href="'#icon-left'"></use></svg></el-button>
@@ -24,17 +24,17 @@
     </el-dialog>
 </div>
 <template id="app-permission">
-    <div class="wln">
-        <el-table :data="rows" :empty-text="message" style="width:100%">
-            <el-table-column width="150" property="name" label="权限名称"></el-table-column>
-            <el-table-column property="description" label="权限说明"></el-table-column>
-            <el-table-column width="180" label="操作" align="center">
-                <template scope="scope">
-                    <el-button size="mini" icon="el-icon-check" type="success" @@click="Change(scope.row.code)" v-if="scope.row.inlist" :plain="scope.row.empty">已授权</el-button><el-button size="mini" icon="el-icon-close" type="warning" @@click="Change(scope.row.code)" v-else :plain="scope.row.empty">未授权</el-button><el-button size="mini" icon="el-icon-refresh" type="danger" @@click="Remove(scope.row.code)" :plain="scope.row.empty" :disabled="scope.row.empty">重置</el-button>
-                </template>
-            </el-table-column>
-        </el-table>
-    </div>
+    <el-table :data="rows" :empty-text="message" style="width:100%">
+        <el-table-column width="150" property="name" label="权限名称"></el-table-column>
+        <el-table-column property="description" label="权限说明"></el-table-column>
+        <el-table-column width="210" label="操作" align="center">
+            <template scope="scope">
+                <el-button size="mini" icon="el-icon-check" type="success" @@click="Change(scope.row.code)" v-if="scope.row.inlist" :plain="scope.row.empty">已授权</el-button>
+                <el-button size="mini" icon="el-icon-close" type="warning" @@click="Change(scope.row.code)" v-else :plain="scope.row.empty">未授权</el-button>
+                <el-button size="mini" icon="el-icon-refresh" type="danger" @@click="Remove(scope.row.code)" :plain="scope.row.empty" :disabled="scope.row.empty">重置</el-button>
+            </template>
+        </el-table-column>
+    </el-table>
 </template>
 <template id="app-organs">
     <el-table :data="rows" :empty-text="message">
@@ -42,7 +42,7 @@
         <el-table-column></el-table-column>
         <el-table-column width="180" align="center" property="rolename" label="授权角色"></el-table-column>
         <el-table-column width="210" align="center" property="create" label="授权时间"></el-table-column>
-        <el-table-column width="210" label="操作" align="center">
+        <el-table-column width="180" label="操作" align="center">
             <template scope="scope">
                 <el-button size="mini" icon="el-icon-sort" type="primary" @@click="setRoles(scope.row.role,scope.row.organ)">角色切换</el-button><el-button size="mini" icon="el-icon-tickets" type="primary" @@click="topage(2,scope.row.organ)">权限详情</el-button>
             </template>
@@ -50,6 +50,7 @@
     </el-table>
 </template>
 <script type="text/javascript">
+    $('#app').height($(window).height() - 70);
     function Change(code) {
         if (new Date().getTime() - ts < 10000) {
             return app.$message({ type: 'info', message: '请求正在处理中，请稍候' });
