@@ -1,4 +1,7 @@
 ﻿var ts = 0;
+if (localStorage.getItem('left') == 'min') {
+    $('#left').addClass('min');
+}
 var menuStr = sessionStorage.getItem('menu');
 if (menuStr) {
     setMenu(JSON.parse(menuStr));
@@ -10,8 +13,9 @@ if (menuStr) {
 }
 function setMenu(data) {
     _data = data;
+    _data.nopopover = localStorage.getItem('left') != 'min';
     new Vue({
-        el: '#menu', data: data, router: xRouter, created() {
+        el: '#menu', data: _data, router: xRouter, created() {
             this.checkLogin();
             $('#menu').show();
         }, methods: {
@@ -20,11 +24,22 @@ function setMenu(data) {
             }
         }
     });
-    new Vue({ el: '#topbar', data: data });
+    new Vue({ el: '#topbar', data: _data });
     var active = $('.menu-item[href="' + location.pathname + '"]');
     active.addClass('router-link-exact-active')
     if (active.hasClass('menu-item-sub')) {
         active.parent().prev()[0].click()
+    }
+}
+function Switch() {
+    if (localStorage.getItem('left') == 'min') {
+        $('#left').removeClass('min');
+        localStorage.removeItem('left');
+        _data.nopopover = true;
+    } else {
+        $('#left').addClass('min');
+        localStorage.setItem('left', 'min')
+        _data.nopopover = false;
     }
 }
 function Reload() {
