@@ -63,7 +63,7 @@
             });
         }
         function Logout() {
-            @if (ViewBag.UserAgent.ToString() == "weixin" && ViewBag.Weixin.ToString() == "已绑定"){<text>wln.alert('您已绑定微信，请先解绑后再注销')</text>}else{<text>location.href = 'ucenter?do=logout';</text>}
+            wln.confirm('您确定要注销登录吗？', function () { location.href = 'ucenter?do=logout' });
         }
     </script>
 </body>
