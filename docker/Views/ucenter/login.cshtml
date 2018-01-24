@@ -19,7 +19,7 @@
                 </li>
                 <li style="background:#f8f8f8;width:100%;height:100%;overflow:hidden;border-top:1px solid #c6c6c6;">
                     <div style="height:100%;display:table-cell;vertical-align:middle;"><label style="display:inline-block;padding:0 5px 0 10px;white-space:nowrap;">验证码:</label></div>
-                    <div style="height:100%;display:table-cell;vertical-align:middle;width:100%;"><input id="login_vcode" onclick="this.focus();" type="tel" maxlength="6" style="height:45px;line-height:43px;font-size:14px;border:0;background:none;width:100%;"></div>
+                    <div style="height:100%;display:table-cell;vertical-align:middle;width:100%;"><input id="login_vcode" onkeydown="keylogin(event)" onclick="this.focus();" type="tel" maxlength="6" style="height:45px;line-height:43px;font-size:14px;border:0;background:none;width:100%;"></div>
                     <div style="height:100%;display:table-cell;vertical-align:middle;width:100px;"><input id="btn_vcode" type="button" value="获取验证码" onclick="DoLogin('sendpwd')" style="height:45px;line-height:45px;color:#ffffff;width:120px;text-align:center;background:#2FB0C2;font-size:12px;"></div>
                 </li>
             </div>
@@ -29,7 +29,7 @@
             <div style="text-align:center;padding:20px;opacity:0.5;font-family:'Microsoft YaHei'">@Html.Raw(ViewBag.Description)</div>
         </div>
     </div>
-    <script type="text/javascript" src="//static.wlniao.com/wlniao/1.0.0/wln.js"></script>
+    <script type="text/javascript" src="//static.wlniao.com/wlniao/1.0.0/wln.js?v1711"></script>
     <script type="text/javascript">
         var seconds = 60; var intervalId; var btnObj;
         function DoLogin(action) {
@@ -65,8 +65,8 @@
                                 }
                             }, 1000);
                         } else if (action == 'login') {
-                            //history.replaceState(null, '', '/');
-                            self.location.reload();
+                            //history.replaceState(null, '', location.pathname);
+                            wln.reload();
                         }
                     } else if (json.message) {
                         if (action == 'sendpwd') {
@@ -78,6 +78,11 @@
                         wln.alert(json.message);
                     }
                 });
+            }
+        }
+        function keylogin(event) {
+            if (event.keyCode == 13) {
+                DoLogin('login')
             }
         }
     </script>

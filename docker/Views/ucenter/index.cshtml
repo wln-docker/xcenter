@@ -52,18 +52,22 @@
         <span class="noweight">注销登录</span>
         <em class="iconfont icon-icon14"></em>
     </div>
-    <script type="text/javascript" src="//static.wlniao.com/wlniao/1.0.0/wln.js"></script>
+    <script type="text/javascript" src="//static.wlniao.com/wlniao/1.0.0/wln.js?v1711"></script>
     <script type="text/javascript">
         function ToUrl(url) {
             location.href = url;
         }
         function Unbind() {
             $.getJSON(location.pathname, { 'do': 'unbind' }, function (rlt) {
-                location.href = location.pathname;
+                history.replaceState(null, '', location.pathname);
+                wln.reload();
             });
         }
         function Logout() {
-            wln.confirm('您确定要注销登录吗？', function () { location.href = 'ucenter?do=logout' });
+            wln.confirm('您确定要注销登录吗？', function () {
+                history.replaceState(null, '', '/ucenter?do=logout');
+                wln.reload();
+            });
         }
     </script>
 </body>
