@@ -40,7 +40,7 @@
         <el-table-column></el-table-column>
         <el-table-column width="180" align="center" property="rolename" label="授权角色"></el-table-column>
         <el-table-column width="210" align="center" property="create" label="授权时间"></el-table-column>
-        <el-table-column width="200" label="操作" align="center">
+        <el-table-column width="240" label="操作" align="center">
             <template scope="scope">
                 <el-button size="mini" icon="el-icon-sort" type="primary" @@click="setRoles(scope.row.role,scope.row.organ)">角色切换</el-button><el-button size="mini" icon="el-icon-tickets" type="primary" @@click="topage(2,scope.row.organ)">权限详情</el-button>
             </template>
