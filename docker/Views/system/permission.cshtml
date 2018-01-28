@@ -1,5 +1,5 @@
-﻿<div id="app" style="overflow:auto;height:100%;">
-    <div class="wln" style="text-align:center;">
+﻿<div id="app" class="wln">
+    <div style="text-align:center;">
         <el-button-group>
             <el-button plain size="mini" type="info" @@click="location.href='/system/account'"><svg class="icon"><use v-bind:xlink:href="'#icon-left'"></use></svg></el-button>
             <el-button v-bind:plain="type!==0" size="mini" type="primary" @@click="topage(0,'')"><svg class="icon"><use v-bind:xlink:href="'#icon-setting'"></use></svg> 系统权限</el-button>
@@ -7,9 +7,7 @@
             <el-button v-bind:plain="type!==2" size="mini" type="primary" @@click="topage(2,'')"><svg class="icon"><use v-bind:xlink:href="'#icon-organ'"></use></svg> @Html.Raw(ViewBag.LabelOrgan)权限</el-button>
         </el-button-group>
     </div>
-    <div class="wln">
-        <router-view></router-view>
-    </div>
+    <div><router-view></router-view></div>
     <el-dialog title="请选择授权角色" width="360px" :visible.sync="dialogFormVisible">
         <el-form :model="role">
             <el-select v-model="role" placeholder="请选择" style="width:320px">

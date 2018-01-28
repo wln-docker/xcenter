@@ -2,10 +2,9 @@
 <template id="app-list">
     <div class="wln">
         <div class="wln-subtitle">
-            <el-button size="small" type="primary" onclick="router.push('/system/organs/add')" style="float:right;">@Html.Raw("新增" + ViewBag.LabelOrgan)</el-button>
+            <el-button size="mini" type="primary" onclick="router.push('/system/organs/add')" style="float:right;">@Html.Raw("新增" + ViewBag.LabelOrgan)</el-button>
             @Html.Raw(ViewBag.LabelOrgan)管理
         </div>
-        <div class="wln-line"></div>
         <el-table :data="rows" :empty-text="message">
             <el-table-column width="160" align="center" label="名称">
                 <template scope="scope">
@@ -38,8 +37,7 @@
         <div class="wln-subtitle">
             @Html.Raw(ViewBag.LabelOrgan)信息 <a onclick="router.push('/system/organs')">返回</a>
         </div>
-        <div class="wln-line"></div>
-        <el-form ref="form" v-model="form" label-width="100px">
+        <el-form ref="form" v-model="form" label-width="180px">
             <el-form-item label="@Html.Raw(ViewBag.LabelOrgan)简称">
                 <el-input v-model="form.name" placeholder="尽量少于5个汉字" style="width:320px"></el-input>
             </el-form-item>

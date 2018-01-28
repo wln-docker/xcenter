@@ -42,10 +42,6 @@ function Switch() {
         _data.nopopover = false;
     }
 }
-function Reload() {
-    sessionStorage.removeItem('menu');
-    location.reload();
-}
 function GoHome() {
     sessionStorage.removeItem('menu');
     location.href = '/';

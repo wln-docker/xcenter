@@ -6,8 +6,8 @@
     <meta name="author" content="wlniao" />
     <meta name="renderer" content="webkit" />
     <link rel="stylesheet" href="/vue/element-ui/theme-chalk/index.css">
-    <link rel="stylesheet" href="/xcenter.css?v1711" />
-    <link rel="stylesheet" href="/oem/style.css?v1711" />
+    <link rel="stylesheet" href="/xcenter.css?@ViewBag.ResVersion" />
+    <link rel="stylesheet" href="/oem/style.css?@ViewBag.ResVersion" />
     <script type="text/javascript">
         var _ua = navigator.userAgent.toLowerCase();
         if (_ua.indexOf('msie') >= 0 || _ua.indexOf('firefox') >= 0 || _ua.indexOf('opera') >= 0 || _ua.indexOf('chrome') < 0) {
@@ -17,7 +17,7 @@
     <script type="text/javascript" src="/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="/vue/vue.min.js"></script>
     <script type="text/javascript" src="/vue/vue-router.js"></script>
-    <script type="text/javascript" src="/vue/vue-xcenter.js?v1711"></script>
+    <script type="text/javascript" src="/vue/vue-xcenter.js?@ViewBag.ResVersion"></script>
     <script type="text/javascript" src="/vue/element-ui/index.js"></script>
     <script type="text/javascript" src="//at.alicdn.com/t/font_323334_hovsz1ehmloez5mi.js"></script>
 </head>
@@ -66,40 +66,9 @@
             </div>
         </div>
         <div id="center">
-            <div id="topbar">
-                <div style="float:right;">
-                    <div style="float:right;border-left:1px solid #e9e9e9;padding:0px 15px;margin-left:15px;">
-                        <el-tooltip content="返回上一个页面" placement="bottom">
-                            <a onclick="history.back()"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-left1"></use></svg></a>
-                        </el-tooltip>
-                        <el-tooltip content="刷新页面及菜单" placement="bottom">
-                            <a onclick="Reload()"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-refresh"></use></svg></a>
-                        </el-tooltip>
-                        <el-tooltip content="在线帮助" placement="bottom">
-                            <a onclick="Vue.prototype.$message({ message: '在线帮助内容正在整理中' });"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-help"></use></svg></a>
-                        </el-tooltip>
-                        <el-tooltip content="注销登录" placement="bottom">
-                            <a href="/logout"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-logout"></use></svg></a>
-                        </el-tooltip>
-                    </div>
-                    @*<el-tooltip content="系统消息将在此显示" placement="bottom">
-                        <a onclick="history.back()"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-notice"></use></svg></a>
-                    </el-tooltip>
-                    <el-tooltip content="您的内部信件" placement="bottom">
-                        <a onclick="Reload()"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-email"></use></svg></a>
-                    </el-tooltip>*@
-                </div>
-            </div>
             @RenderBody()
         </div>
     </div>
-    @*<div id="right">
-        <div id="noticeToggle"><div onclick="$('#noticeControl').toggle()" style="height:50px;width:6px;background:#FFBDBD;font-size:0px;cursor:pointer;">&nbsp;</div></div>
-        <div id="noticeControl">
-            <div style="padding:168px 0px;text-align:center;color:#999999;font-size:12px;font-family:微软雅黑;">待办事项</div>
-        </div>
-        <div style="width:100%;bottom:5px;text-align:center;font-size:12px;color:Gray;position:absolute;">Powered by Wlniao</div>
-    </div>*@
-    <script type="text/javascript" src="/xcenter.js"></script>
+    <script type="text/javascript" src="/xcenter.js?@ViewBag.ResVersion"></script>
 </body>
 </html>

@@ -1,29 +1,21 @@
 ﻿<div id="app" class="wln">
-    <el-form ref="form" label-width="140px">
-        <el-form-item>
-            <el-col :span="3" class="label">原密码&nbsp;</el-col>
+    <div class="wln-subtitle">密码修改</div>
+    <el-form label-width="240px">
+        <el-form-item label="原密码">
             <el-col :span="18">
-                <el-input type="password" v-model="opwd" style="width:150px;"></el-input>&nbsp;
-            </el-col>
+                <el-input type="password" v-model="opwd" style="width:150px;"></el-input><span class="tips notnull"></span>
+        </el-form-item>
+        <el-form-item label="新密码">
+            <el-col :span="18">
+                <el-input type="password" v-model="npwd" style="width:150px;"></el-input><span class="tips notnull"></span>
+        </el-form-item>
+        <el-form-item label="再次确认">
+            <el-col :span="18">
+                <el-input type="password" v-model="rpwd" style="width:150px;"></el-input><span class="tips notnull"></span>
         </el-form-item>
         <el-form-item>
-            <el-col :span="3" class="label">新密码&nbsp;</el-col>
-            <el-col :span="18">
-                <el-input type="password" v-model="npwd" style="width:150px;"></el-input>&nbsp;
-            </el-col>
-        </el-form-item>
-        <el-form-item>
-            <el-col :span="3" class="label">再次确认&nbsp;</el-col>
-            <el-col :span="18">
-                <el-input type="password" v-model="rpwd" style="width:150px;"></el-input>&nbsp;
-            </el-col>
-        </el-form-item>
-        <el-form-item>
-            <el-col :span="3">&nbsp;</el-col>
-            <el-col :span="18">
-                <el-button @@click="onSubmit" type="primary">提交</el-button>
-                <el-button @@click="onClear">取消</el-button>
-            </el-col>
+            <el-button @@click="onSubmit" type="primary">提交</el-button>
+            <el-button @@click="onClear">取消</el-button>
         </el-form-item>
     </el-form>
 </div>

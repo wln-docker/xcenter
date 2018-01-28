@@ -16,9 +16,6 @@ a:hover,a:focus {opacity:0.8}
 #right {height:100%;position:absolute;right:0;top:0;display:table;vertical-align:top;z-index:999;}
 #left {position:inherit;height:100%;width:168px;display:table-cell;vertical-align:top;background:#1f2126;overflow:hidden;}
 #left .logo {width:168px;height:60px;min-height:60px;line-height:60px;overflow:hidden;font-size:0px;text-align:center;background:#25282d url(logo.png) center center no-repeat;background-size:90%;cursor:pointer}
-#topbar {border-bottom:1px solid #ebebeb;height:60px;overflow:hidden;background-color:#ffffff;}
-#topbar a {display:inline-block;width:36px;height:36px;margin:12px 6px;border:1px solid #cccccc;border-radius:60px;}
-#topbar a .icon{height:24px;width:24px;margin:6px;color:#cccccc;}
 #noticeToggle {display:table-cell;vertical-align:bottom;}
 #noticeControl {height:100%;width:180px;display:none;vertical-align:top;background-color:rgb(247,247,247);border-left:1px solid rgb(235,235,235);overflow:hidden;}
 .menu{height:100%;overflow-y:auto;overflow-x:hidden;}
@@ -36,12 +33,15 @@ a:hover,a:focus {opacity:0.8}
 .menu-switch{height:20px;width:100%;display:block;text-align:center;color:#727882;background:#2b2e38;cursor:pointer;}.menu-switch > svg{transform:rotate(90deg);}
 #left.min,#left.min .logo{width:54px}#left.min .logo{background-image:url('logo-min.png')}
 #left.min .menu-switch > svg{transform:rotate(0deg);}
-#left.min .menu-group{padding-top:0;border-top:1px dotted #404144;}#left.min .menu-group:first-child {border-top:none;}
+#left.min .menu-group{padding-top:0;}#left.min .menu-group:first-child {border-top:none;}
 #left.min .menu-title,#left.min .menu-item > span{display:none}
 
-.wln {margin:10px;background:#ffffff;border:10px solid #ffffff;}
-.wln-title {border-left:2px solid #0099cc;padding-left:6px;font-size:20px;margin:6px 0px;}
-.wln-subtitle {font-size:26px;line-height:30px;margin:6px 0px;}
+.wln {background:#ffffff;border:10px solid #ffffff;height:100%;overflow:auto;}
+.wln::-webkit-scrollbar{width:0px;}.wln:hover::-webkit-scrollbar{width:3px;}
+.wln::-webkit-scrollbar-track{background-color:#F5F5F5;}
+.wln::-webkit-scrollbar-thumb{background-color:#9ba3af;}
+.wln-title {border-left:2px solid #0099cc;font-size:20px;padding-left:6px;margin:6px 0px}
+.wln-subtitle {font-size:26px;line-height:30px;margin:6px 0px 8px 0px;padding-bottom:8px;border-bottom:1px solid #dddddd;}
 .wln-subtitle > span {font-size:15px;margin-left:12px;color:#666;}
 .wln-subtitle > a {font-size:14px;vertical-align:bottom;color:#0589B5;text-decoration:none;cursor:pointer;}
 .wln-title button,.wln-subtitle button{vertical-align:middle;}

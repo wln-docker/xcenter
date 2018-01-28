@@ -13,7 +13,6 @@
                 <el-button v-bind:plain="emptyPager.type!==2" size="mini" type="primary" @@click="topage(2,'')"><svg class="icon"><use v-bind:xlink:href="'#icon-organ'"></use></svg> @Html.Raw(ViewBag.LabelOrgan)权限</el-button>
             </el-button-group>
         </div>
-        <div class="wln-line"></div>
         <el-table :data="rows" :empty-text="message"  style="width:100%">
             <el-table-column width="90" label="类型">
                 <template scope="scope">
@@ -36,11 +35,8 @@
 </template>
 <template id="app-form">
     <div class="wln">
-        <div class="wln-subtitle">
-            权限信息
-        </div>
-        <div class="wln-line"></div>
-        <el-form ref="form" v-model="form" label-width="80px">
+        <div class="wln-subtitle">权限信息</div>
+        <el-form ref="form" v-model="form" label-width="180px">
             <el-form-item label="权限名称">
                 <el-input v-model="form.name" placeholder="必填" style="width:320px"></el-input>
             </el-form-item>

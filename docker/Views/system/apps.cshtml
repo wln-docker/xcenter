@@ -5,7 +5,6 @@
             <el-button size="small" type="primary" onclick="location.href='/system/labels'" style="float:right;">标签名称管理</el-button>
             @Html.Raw(ViewBag.LabelApp)管理
         </div>
-        <div class="wln-line"></div>
         <el-table :data="rows" :empty-text="message">
             <el-table-column width="50" align="center" type="index"></el-table-column>
             <el-table-column width="100" align="center" label="@Html.Raw(ViewBag.LabelApp)">

@@ -1,18 +1,16 @@
 ﻿<style>
     .el-input-group__append{padding:0 6px}
 </style>
-<div id="app"><router-view></router-view></div>
+<div id="app" class="wln"><router-view></router-view></div>
 <template id="app-list">
-    <div class="wln">
+    <div>
         <div class="wln-subtitle">
             <div style="float:right">
-                <el-button size="mini" type="info" :plain="true" onclick="history.back()">返回</el-button>
-                <el-button size="mini" icon="el-icon-plus" type="primary" onclick="router.push('/system/account/add')">新增账号</el-button>
+                <el-button size="mini" type="info" :plain="true" onclick="history.back()">返回</el-button><el-button size="mini" icon="el-icon-plus" type="primary" onclick="router.push('/system/account/add')">新增账号</el-button>
                 <input type="text" v-model="key" :value="key" @@keydown="search($event)" placeholder="按回车键进行查找" />
             </div>
             账号管理<span>授权总数：@Html.Raw(ViewBag.wKeyUser)</span>
         </div>
-        <div class="wln-line"></div>
         <el-table :data="rows" :empty-text="message" style="width:100%">
             <el-table-column width="150" property="account" label="帐号"></el-table-column>
             <el-table-column label="姓名">
@@ -46,11 +44,13 @@
     </div>
 </template>
 <template id="app-form">
-    <div class="wln">
+    <div>
         <div class="wln-subtitle">
-            账号信息 <a onclick="router.push('/system/account')">返回</a>
+            <div style="float:right">
+                <el-button size="mini" type="info" :plain="true" onclick="history.back()">返回</el-button>
+            </div>
+            账号信息
         </div>
-        <div class="wln-line"></div>
         <el-form ref="form" v-model="form" label-width="80px">
             <el-form-item label="账号">
                 <el-input v-model="form.account" placeholder="推荐使用手机号" style="width:240px"></el-input> <span class="tips notnull"></span>
