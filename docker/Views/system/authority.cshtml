@@ -1,7 +1,7 @@
 ﻿<div id="app"><router-view></router-view></div>
 <template id="app-list">
     <div class="wln">
-        <div class="wln-subtitle">
+        <div class="wln-title">
             <div style="float:right">
                 <el-button size="mini" icon="el-icon-plus" type="primary" onclick="router.push('/system/authority/add?type=' + emptyPager.type)">新增权限点</el-button>
                 <input type="text" v-model="key" :value="key" @@keydown="search($event)" placeholder="按回车键进行查找" />
@@ -35,7 +35,7 @@
 </template>
 <template id="app-form">
     <div class="wln">
-        <div class="wln-subtitle">权限信息</div>
+        <div class="wln-title">权限信息</div>
         <el-form ref="form" v-model="form" label-width="180px">
             <el-form-item label="权限名称">
                 <el-input v-model="form.name" placeholder="必填" style="width:320px"></el-input>

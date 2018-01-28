@@ -1,7 +1,7 @@
 ﻿<div id="app"><router-view></router-view></div>
 <template id="app-list">
     <div class="wln">
-        <div class="wln-subtitle">
+        <div class="wln-title">
             <el-button size="mini" type="primary" onclick="router.push('/system/organs/add')" style="float:right;">@Html.Raw("新增" + ViewBag.LabelOrgan)</el-button>
             @Html.Raw(ViewBag.LabelOrgan)管理
         </div>
@@ -34,7 +34,7 @@
 </template>
 <template id="app-form">
     <div class="wln">
-        <div class="wln-subtitle">
+        <div class="wln-title">
             @Html.Raw(ViewBag.LabelOrgan)信息 <a onclick="router.push('/system/organs')">返回</a>
         </div>
         <el-form ref="form" v-model="form" label-width="180px">

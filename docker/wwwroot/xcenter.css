@@ -40,14 +40,14 @@ a:hover,a:focus {opacity:0.8}
 .wln::-webkit-scrollbar{width:0px;}.wln:hover::-webkit-scrollbar{width:3px;}
 .wln::-webkit-scrollbar-track{background-color:#F5F5F5;}
 .wln::-webkit-scrollbar-thumb{background-color:#9ba3af;}
-.wln-title {border-left:2px solid #0099cc;font-size:20px;padding-left:6px;margin:6px 0px}
-.wln-subtitle {font-size:26px;line-height:30px;margin:6px 0px 8px 0px;padding-bottom:8px;border-bottom:1px solid #dddddd;}
-.wln-subtitle > span {font-size:15px;margin-left:12px;color:#666;}
-.wln-subtitle > a {font-size:14px;vertical-align:bottom;color:#0589B5;text-decoration:none;cursor:pointer;}
-.wln-title button,.wln-subtitle button{vertical-align:middle;}
 .wln-line{border-bottom:1px solid #dddddd;padding-top:8px;margin-bottom:8px;}
+.wln-title {font-size:26px;line-height:30px;margin:6px 0px 8px 0px;padding-bottom:8px;border-bottom:1px solid #dddddd;}
+.wln-title > span {font-size:15px;margin-left:12px;color:#666;}
+.wln-title > a {font-size:14px;vertical-align:bottom;color:#0589B5;text-decoration:none;cursor:pointer;}
+.wln-title .el-input__inner {height:34px;}
+.wln-subtitle {border-left:2px solid #0099cc;font-size:20px;padding-left:6px;margin:6px 0px}
+.wln-title button,.wln-subtitle button{vertical-align:middle;}
 .wln-title .el-button--small,.wln-subtitle .el-button--small {line-height:16px;vertical-align:middle;}
-.wln-subtitle .el-input__inner {height:34px;}
 
 .el-pagination {margin-top:10px;}
 .el-button + .el-button {margin-left:6px;}

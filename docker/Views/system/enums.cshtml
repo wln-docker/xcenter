@@ -12,14 +12,14 @@
 </style>
 <template id="app-list">
     <div>
-        <div class="wln-subtitle">基础数据字典</div>
+        <div class="wln-title">基础数据字典</div>
         <el-input placeholder="输入关键字进行过滤" v-model="filterText" style="margin-bottom:10px;"></el-input>
         <el-tree class="filter-tree" :data="tree" :props="defaultProps" :load="loadNode" :filter-node-method="filterNode" :render-content="renderContent" node-key="key" :default-expanded-keys="['_empty']" ref="tree" lazy></el-tree>
     </div>
 </template>
 <template id="app-form">
     <div>
-        <div class="wln-subtitle">
+        <div class="wln-title">
             <div style="float:right">
                 <el-button size="mini" type="info" :plain="true" onclick="history.back()">返回</el-button>
             </div>

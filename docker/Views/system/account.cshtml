@@ -4,7 +4,7 @@
 <div id="app" class="wln"><router-view></router-view></div>
 <template id="app-list">
     <div>
-        <div class="wln-subtitle">
+        <div class="wln-title">
             <div style="float:right">
                 <el-button size="mini" type="info" :plain="true" onclick="history.back()">返回</el-button><el-button size="mini" icon="el-icon-plus" type="primary" onclick="router.push('/system/account/add')">新增账号</el-button>
                 <input type="text" v-model="key" :value="key" @@keydown="search($event)" placeholder="按回车键进行查找" />
@@ -45,7 +45,7 @@
 </template>
 <template id="app-form">
     <div>
-        <div class="wln-subtitle">
+        <div class="wln-title">
             <div style="float:right">
                 <el-button size="mini" type="info" :plain="true" onclick="history.back()">返回</el-button>
             </div>

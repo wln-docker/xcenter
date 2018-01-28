@@ -7,7 +7,7 @@
 <div id="app"><router-view></router-view></div>
 <template id="app-list">
     <div class="wln">
-        <div class="wln-subtitle">
+        <div class="wln-title">
             <div style="float:right">
                 <el-button size="mini" icon="el-icon-plus" type="primary" onclick="router.push('/system/role/add')">新增角色</el-button><el-button size="mini" icon="el-icon-news" type="primary" onclick="location.href='/system/authority'">权限点管理</el-button>
             </div>
@@ -35,7 +35,7 @@
 </template>
 <template id="app-form">
     <div class="wln">
-        <div class="wln-subtitle">
+        <div class="wln-title">
             角色信息 <a onclick="router.push('/system/role')">返回</a>
         </div>
         <el-form ref="form" v-model="form" label-width="80px">
@@ -59,7 +59,7 @@
 </template>
 <template id="app-permission">
     <div class="wln">
-        <div class="wln-subtitle">
+        <div class="wln-title">
             <div style="float:right">
                 <input type="text" v-model="key" :value="key" @@keydown="search($event)" placeholder="按回车键进行查找" />
             </div>

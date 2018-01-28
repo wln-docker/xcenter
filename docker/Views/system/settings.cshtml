@@ -1,5 +1,5 @@
 ﻿<div id="app" class="wln">
-    <div class="wln-subtitle">系统参数管理<span style="float:right;color:#999999">WID:@ViewBag.Wid</span> <span style="color:#ff6a00">此操作有风险请谨慎修改</span></div>
+    <div class="wln-title">系统参数管理<span style="float:right;color:#999999">WID:@ViewBag.Wid</span> <span style="color:#ff6a00">此操作有风险请谨慎修改</span></div>
     <el-table :data="rows" :empty-text="message">
         <el-table-column width="210" label="参数" property="key"></el-table-column>
         <el-table-column property="description" label="描述"></el-table-column>
