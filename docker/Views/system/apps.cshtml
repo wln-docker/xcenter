@@ -2,7 +2,7 @@
 <template id="app-list">
     <div class="wln">
         <div class="wln-title">
-            <el-button size="small" type="primary" onclick="location.href='/system/labels'" style="float:right;">标签名称管理</el-button>
+            <el-button size="mini" type="primary" onclick="location.href='/system/labels'" style="float:right;">标签名称管理</el-button>
             @Html.Raw(ViewBag.LabelApp)管理
         </div>
         <el-table :data="rows" :empty-text="message">
